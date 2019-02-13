@@ -1,6 +1,9 @@
 package com.phamed.service;
 
 import com.phamed.plexModels.MediaContainer;
+import com.phamed.plexModels.Video;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -13,8 +16,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Service
 public class PlexService {
+
+  private String url = System.getenv("URL");
+
+  private String token = System.getenv("TOKEN");
+
+  private final String urlAddress = url + "/library/all?X-Plex-Token=" + token;
+
 
   public List<Object> getAllMediaFromFile(String file) {
     List<Object> allMedia = new ArrayList<>();
@@ -30,8 +42,9 @@ public class PlexService {
     return allMedia;
   }
 
-  public void getXmlFromURLTofile(URL url) throws IOException {
-    URLConnection con = url.openConnection();
+  public void getXmlFromURLTofile(String url) throws IOException {
+    URL urlAddress = new URL(url);
+    URLConnection con = urlAddress.openConnection();
     InputStream in = con.getInputStream();
     String filePath = "httpData.xml";
     File data = new File(filePath);
@@ -47,8 +60,9 @@ public class PlexService {
     fos.close();
   }
 
-  public List<Object> getXmlFromUrlToObject(URL url) throws IOException, JAXBException {
-    URLConnection con = url.openConnection();
+  public List<Object> getXmlFromUrlToObject(String url) throws IOException, JAXBException {
+    URL urlAddress = new URL(url);
+    URLConnection con = urlAddress.openConnection();
     InputStream in = con.getInputStream();
     JAXBContext jaxbContext = JAXBContext.newInstance(MediaContainer.class);
     Unmarshaller jaxbUnmashaller = jaxbContext.createUnmarshaller();
@@ -56,5 +70,19 @@ public class PlexService {
     List<Object> directorTypes = mediaContainerList.getDirectoryOrVideo();
     in.close();
     return directorTypes;
+  }
+
+  public List<Object> allVideos() {
+    List<Object> all = new ArrayList<>();
+    try {
+      all = getXmlFromUrlToObject(urlAddress).stream()
+          .filter(v -> v instanceof Video)
+          .collect(Collectors.toList());
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (JAXBException e) {
+      e.printStackTrace();
+    }
+    return all;
   }
 }
