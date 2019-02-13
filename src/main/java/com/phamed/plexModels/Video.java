@@ -128,6 +128,16 @@ public class Video {
     protected String addedAt;
     @XmlAttribute(name = "updatedAt")
     protected String updatedAt;
+    @XmlAttribute(name = "lastViewedAt")
+    protected String lastViewedAt;
+
+    public String getLastViewedAt() {
+        return lastViewedAt;
+    }
+
+    public void setLastViewedAt(String lastViewedAt) {
+        this.lastViewedAt = lastViewedAt;
+    }
 
     /**
      * Gets the value of the director property.
@@ -137,6 +147,7 @@ public class Video {
      *     {@link Director }
      *     
      */
+
     public Director getDirector() {
         return director;
     }
