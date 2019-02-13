@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Genre">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tag" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Role">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tag" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Director">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tag" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Writer">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tag" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Country">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tag" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Collection">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tag" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Directory">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="Genre" minOccurs="0"/>
+        <xs:element ref="Role" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="ratingKey" use="optional"/>
+      <xs:attribute type="xs:string" name="key" use="optional"/>
+      <xs:attribute type="xs:string" name="librarySectionTitle" use="optional"/>
+      <xs:attribute type="xs:string" name="librarySectionID" use="optional"/>
+      <xs:attribute type="xs:string" name="librarySectionKey" use="optional"/>
+      <xs:attribute type="xs:string" name="studio" use="optional"/>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+      <xs:attribute type="xs:string" name="title" use="optional"/>
+      <xs:attribute type="xs:string" name="titleSort" use="optional"/>
+      <xs:attribute type="xs:string" name="contentRating" use="optional"/>
+      <xs:attribute type="xs:string" name="summary" use="optional"/>
+      <xs:attribute type="xs:string" name="index" use="optional"/>
+      <xs:attribute type="xs:string" name="rating" use="optional"/>
+      <xs:attribute type="xs:string" name="viewCount" use="optional"/>
+      <xs:attribute type="xs:string" name="lastViewedAt" use="optional"/>
+      <xs:attribute type="xs:string" name="year" use="optional"/>
+      <xs:attribute type="xs:string" name="thumb" use="optional"/>
+      <xs:attribute type="xs:string" name="art" use="optional"/>
+      <xs:attribute type="xs:string" name="banner" use="optional"/>
+      <xs:attribute type="xs:string" name="theme" use="optional"/>
+      <xs:attribute type="xs:string" name="duration" use="optional"/>
+      <xs:attribute type="xs:string" name="originallyAvailableAt" use="optional"/>
+      <xs:attribute type="xs:string" name="leafCount" use="optional"/>
+      <xs:attribute type="xs:string" name="viewedLeafCount" use="optional"/>
+      <xs:attribute type="xs:string" name="childCount" use="optional"/>
+      <xs:attribute type="xs:string" name="addedAt" use="optional"/>
+      <xs:attribute type="xs:string" name="updatedAt" use="optional"/>
+      <xs:attribute type="xs:string" name="parentRatingKey" use="optional"/>
+      <xs:attribute type="xs:string" name="parentKey" use="optional"/>
+      <xs:attribute type="xs:string" name="parentTitle" use="optional"/>
+      <xs:attribute type="xs:string" name="parentIndex" use="optional"/>
+      <xs:attribute type="xs:string" name="parentThumb" use="optional"/>
+      <xs:attribute type="xs:string" name="parentTheme" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Video">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Director"/>
+        <xs:element ref="Writer"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="ratingKey" use="optional"/>
+      <xs:attribute type="xs:string" name="key" use="optional"/>
+      <xs:attribute type="xs:string" name="parentRatingKey" use="optional"/>
+      <xs:attribute type="xs:string" name="grandparentRatingKey" use="optional"/>
+      <xs:attribute type="xs:string" name="librarySectionTitle" use="optional"/>
+      <xs:attribute type="xs:string" name="librarySectionID" use="optional"/>
+      <xs:attribute type="xs:string" name="librarySectionKey" use="optional"/>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+      <xs:attribute type="xs:string" name="title" use="optional"/>
+      <xs:attribute type="xs:string" name="titleSort" use="optional"/>
+      <xs:attribute type="xs:string" name="grandparentKey" use="optional"/>
+      <xs:attribute type="xs:string" name="parentKey" use="optional"/>
+      <xs:attribute type="xs:string" name="grandparentTitle" use="optional"/>
+      <xs:attribute type="xs:string" name="parentTitle" use="optional"/>
+      <xs:attribute type="xs:string" name="contentRating" use="optional"/>
+      <xs:attribute type="xs:string" name="summary" use="optional"/>
+      <xs:attribute type="xs:string" name="index" use="optional"/>
+      <xs:attribute type="xs:string" name="parentIndex" use="optional"/>
+      <xs:attribute type="xs:string" name="rating" use="optional"/>
+      <xs:attribute type="xs:string" name="year" use="optional"/>
+      <xs:attribute type="xs:string" name="thumb" use="optional"/>
+      <xs:attribute type="xs:string" name="art" use="optional"/>
+      <xs:attribute type="xs:string" name="parentThumb" use="optional"/>
+      <xs:attribute type="xs:string" name="grandparentThumb" use="optional"/>
+      <xs:attribute type="xs:string" name="grandparentArt" use="optional"/>
+      <xs:attribute type="xs:string" name="grandparentTheme" use="optional"/>
+      <xs:attribute type="xs:string" name="originallyAvailableAt" use="optional"/>
+      <xs:attribute type="xs:string" name="addedAt" use="optional"/>
+      <xs:attribute type="xs:string" name="updatedAt" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MediaContainer">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="Directory" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="Video"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="size"/>
+      <xs:attribute type="xs:string" name="allowSync"/>
+      <xs:attribute type="xs:string" name="identifier"/>
+      <xs:attribute type="xs:string" name="mediaTagPrefix"/>
+      <xs:attribute type="xs:string" name="mediaTagVersion"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
