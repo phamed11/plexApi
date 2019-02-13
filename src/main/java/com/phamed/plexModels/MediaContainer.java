@@ -1,6 +1,10 @@
 
 package com.phamed.plexModels;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -42,6 +46,9 @@ import javax.xml.bind.annotation.XmlType;
     "directoryOrVideo"
 })
 @XmlRootElement(name = "MediaContainer")
+@Getter
+@Setter
+@ToString
 public class MediaContainer {
 
     @XmlElements({
@@ -59,168 +66,5 @@ public class MediaContainer {
     protected String mediaTagPrefix;
     @XmlAttribute(name = "mediaTagVersion")
     protected String mediaTagVersion;
-
-    /**
-     * Gets the value of the directoryOrVideo property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the directoryOrVideo property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDirectoryOrVideo().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Directory }
-     * {@link Video }
-     * 
-     * 
-     */
-    public List<Object> getDirectoryOrVideo() {
-        if (directoryOrVideo == null) {
-            directoryOrVideo = new ArrayList<Object>();
-        }
-        return this.directoryOrVideo;
-    }
-
-    /**
-     * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSize() {
-        return size;
-    }
-
-    @Override
-    public String toString() {
-        return "MediaContainer{" +
-            "directoryOrVideo=" + directoryOrVideo +
-            ", size='" + size + '\'' +
-            ", allowSync='" + allowSync + '\'' +
-            ", identifier='" + identifier + '\'' +
-            ", mediaTagPrefix='" + mediaTagPrefix + '\'' +
-            ", mediaTagVersion='" + mediaTagVersion + '\'' +
-            '}';
-    }
-
-    /**
-     * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-
-    public void setSize(String value) {
-        this.size = value;
-    }
-
-    /**
-     * Gets the value of the allowSync property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAllowSync() {
-        return allowSync;
-    }
-
-    /**
-     * Sets the value of the allowSync property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAllowSync(String value) {
-        this.allowSync = value;
-    }
-
-    /**
-     * Gets the value of the identifier property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    /**
-     * Sets the value of the identifier property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdentifier(String value) {
-        this.identifier = value;
-    }
-
-    /**
-     * Gets the value of the mediaTagPrefix property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMediaTagPrefix() {
-        return mediaTagPrefix;
-    }
-
-    /**
-     * Sets the value of the mediaTagPrefix property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMediaTagPrefix(String value) {
-        this.mediaTagPrefix = value;
-    }
-
-    /**
-     * Gets the value of the mediaTagVersion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMediaTagVersion() {
-        return mediaTagVersion;
-    }
-
-    /**
-     * Sets the value of the mediaTagVersion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMediaTagVersion(String value) {
-        this.mediaTagVersion = value;
-    }
 
 }
