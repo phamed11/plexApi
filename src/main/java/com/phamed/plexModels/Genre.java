@@ -38,6 +38,14 @@ public class Genre {
     @XmlAttribute(name = "tag")
     protected String tag;
 
+    @Override
+    public String toString() {
+        return "Genre{" +
+            "value='" + value + '\'' +
+            ", tag='" + tag + '\'' +
+            '}';
+    }
+
     /**
      * Gets the value of the value property.
      * 
@@ -46,6 +54,7 @@ public class Genre {
      *     {@link String }
      *     
      */
+
     public String getValue() {
         return value;
     }

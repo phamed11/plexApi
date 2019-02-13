@@ -38,6 +38,14 @@ public class Country {
     @XmlAttribute(name = "tag")
     protected String tag;
 
+    @Override
+    public String toString() {
+        return "Country{" +
+            "value='" + value + '\'' +
+            ", tag='" + tag + '\'' +
+            '}';
+    }
+
     /**
      * Gets the value of the value property.
      * 
@@ -46,6 +54,8 @@ public class Country {
      *     {@link String }
      *     
      */
+
+
     public String getValue() {
         return value;
     }
