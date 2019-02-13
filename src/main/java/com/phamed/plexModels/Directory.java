@@ -453,6 +453,46 @@ public class Directory {
         return index;
     }
 
+    @Override
+    public String toString() {
+        return "Directory{" +
+            "content=" + content +
+            ", ratingKey='" + ratingKey + '\'' +
+            ", key='" + key + '\'' +
+            ", librarySectionTitle='" + librarySectionTitle + '\'' +
+            ", librarySectionID='" + librarySectionID + '\'' +
+            ", librarySectionKey='" + librarySectionKey + '\'' +
+            ", studio='" + studio + '\'' +
+            ", type='" + type + '\'' +
+            ", title='" + title + '\'' +
+            ", titleSort='" + titleSort + '\'' +
+            ", contentRating='" + contentRating + '\'' +
+            ", summary='" + summary + '\'' +
+            ", index='" + index + '\'' +
+            ", rating='" + rating + '\'' +
+            ", viewCount='" + viewCount + '\'' +
+            ", lastViewedAt='" + lastViewedAt + '\'' +
+            ", year='" + year + '\'' +
+            ", thumb='" + thumb + '\'' +
+            ", art='" + art + '\'' +
+            ", banner='" + banner + '\'' +
+            ", theme='" + theme + '\'' +
+            ", duration='" + duration + '\'' +
+            ", originallyAvailableAt='" + originallyAvailableAt + '\'' +
+            ", leafCount='" + leafCount + '\'' +
+            ", viewedLeafCount='" + viewedLeafCount + '\'' +
+            ", childCount='" + childCount + '\'' +
+            ", addedAt='" + addedAt + '\'' +
+            ", updatedAt='" + updatedAt + '\'' +
+            ", parentRatingKey='" + parentRatingKey + '\'' +
+            ", parentKey='" + parentKey + '\'' +
+            ", parentTitle='" + parentTitle + '\'' +
+            ", parentIndex='" + parentIndex + '\'' +
+            ", parentThumb='" + parentThumb + '\'' +
+            ", parentTheme='" + parentTheme + '\'' +
+            '}';
+    }
+
     /**
      * Sets the value of the index property.
      * 
@@ -461,6 +501,7 @@ public class Directory {
      *     {@link String }
      *     
      */
+
     public void setIndex(String value) {
         this.index = value;
     }

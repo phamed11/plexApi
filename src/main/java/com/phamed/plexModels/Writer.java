@@ -86,4 +86,11 @@ public class Writer {
         this.tag = value;
     }
 
+    @Override
+    public String toString() {
+        return "Writer{" +
+            "value='" + value + '\'' +
+            ", tag='" + tag + '\'' +
+            '}';
+    }
 }

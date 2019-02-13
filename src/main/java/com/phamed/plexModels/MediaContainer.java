@@ -102,6 +102,18 @@ public class MediaContainer {
         return size;
     }
 
+    @Override
+    public String toString() {
+        return "MediaContainer{" +
+            "directoryOrVideo=" + directoryOrVideo +
+            ", size='" + size + '\'' +
+            ", allowSync='" + allowSync + '\'' +
+            ", identifier='" + identifier + '\'' +
+            ", mediaTagPrefix='" + mediaTagPrefix + '\'' +
+            ", mediaTagVersion='" + mediaTagVersion + '\'' +
+            '}';
+    }
+
     /**
      * Sets the value of the size property.
      * 
@@ -110,6 +122,7 @@ public class MediaContainer {
      *     {@link String }
      *     
      */
+
     public void setSize(String value) {
         this.size = value;
     }

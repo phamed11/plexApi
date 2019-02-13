@@ -153,6 +153,43 @@ public class Video {
         this.director = value;
     }
 
+    @Override
+    public String toString() {
+        return "Video{" +
+            "director=" + director +
+            ", writer=" + writer +
+            ", ratingKey='" + ratingKey + '\'' +
+            ", key='" + key + '\'' +
+            ", parentRatingKey='" + parentRatingKey + '\'' +
+            ", grandparentRatingKey='" + grandparentRatingKey + '\'' +
+            ", librarySectionTitle='" + librarySectionTitle + '\'' +
+            ", librarySectionID='" + librarySectionID + '\'' +
+            ", librarySectionKey='" + librarySectionKey + '\'' +
+            ", type='" + type + '\'' +
+            ", title='" + title + '\'' +
+            ", titleSort='" + titleSort + '\'' +
+            ", grandparentKey='" + grandparentKey + '\'' +
+            ", parentKey='" + parentKey + '\'' +
+            ", grandparentTitle='" + grandparentTitle + '\'' +
+            ", parentTitle='" + parentTitle + '\'' +
+            ", contentRating='" + contentRating + '\'' +
+            ", summary='" + summary + '\'' +
+            ", index='" + index + '\'' +
+            ", parentIndex='" + parentIndex + '\'' +
+            ", rating='" + rating + '\'' +
+            ", year='" + year + '\'' +
+            ", thumb='" + thumb + '\'' +
+            ", art='" + art + '\'' +
+            ", parentThumb='" + parentThumb + '\'' +
+            ", grandparentThumb='" + grandparentThumb + '\'' +
+            ", grandparentArt='" + grandparentArt + '\'' +
+            ", grandparentTheme='" + grandparentTheme + '\'' +
+            ", originallyAvailableAt='" + originallyAvailableAt + '\'' +
+            ", addedAt='" + addedAt + '\'' +
+            ", updatedAt='" + updatedAt + '\'' +
+            '}';
+    }
+
     /**
      * Gets the value of the writer property.
      * 
@@ -161,6 +198,8 @@ public class Video {
      *     {@link Writer }
      *     
      */
+
+
     public Writer getWriter() {
         return writer;
     }
