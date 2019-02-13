@@ -42,20 +42,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "directoryOrVideo"
-})
 @XmlRootElement(name = "MediaContainer")
 @Getter
 @Setter
 @ToString
 public class MediaContainer {
 
-    @XmlElements({
-        @XmlElement(name = "Directory", type = Directory.class),
-        @XmlElement(name = "Video", type = Video.class)
-    })
-    protected List<Object> directoryOrVideo;
+    @XmlElement(name = "Directory")
+    protected List<Directory> directories;
+    @XmlElement(name = "Video")
+    protected List<Video> videos;
     @XmlAttribute(name = "size")
     protected String size;
     @XmlAttribute(name = "allowSync")

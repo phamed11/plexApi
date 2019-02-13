@@ -28,14 +28,14 @@ public class PlexService {
   private final String urlAddress = url + "/library/all?X-Plex-Token=" + token;
 
 
-  public List<Object> getAllMediaFromFile(String file) {
-    List<Object> allMedia = new ArrayList<>();
+  public List<Video> getAllMediaFromFile(String file) {
+    List<Video> allMedia = new ArrayList<>();
     try {
       JAXBContext jaxbContext = JAXBContext.newInstance(MediaContainer.class);
       Unmarshaller jaxbUnmashaller = jaxbContext.createUnmarshaller();
       File xmlFile = new File(file);
       MediaContainer mediaContainerList = (MediaContainer) jaxbUnmashaller.unmarshal(xmlFile);
-      allMedia = mediaContainerList.getDirectoryOrVideo();
+      allMedia = mediaContainerList.getVideos();
     } catch (JAXBException e) {
       e.printStackTrace();
     }
@@ -60,14 +60,14 @@ public class PlexService {
     fos.close();
   }
 
-  public List<Object> getXmlFromUrlToObject(String url) throws IOException, JAXBException {
+  public List<Video> getXmlFromUrlToObject(String url) throws IOException, JAXBException {
     URL urlAddress = new URL(url);
     URLConnection con = urlAddress.openConnection();
     InputStream in = con.getInputStream();
     JAXBContext jaxbContext = JAXBContext.newInstance(MediaContainer.class);
     Unmarshaller jaxbUnmashaller = jaxbContext.createUnmarshaller();
     MediaContainer mediaContainerList = (MediaContainer) jaxbUnmashaller.unmarshal(in);
-    List<Object> directorTypes = mediaContainerList.getDirectoryOrVideo();
+    List<Video> directorTypes = mediaContainerList.getVideos();
     in.close();
     return directorTypes;
   }

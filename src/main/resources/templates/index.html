@@ -9,6 +9,15 @@
 <body>
 <div th:each="video : ${videos}">
   <p th:text="${video.title}"></p>
+  <div th:each="director : ${video.director}">
+    <p th:text="${director}"></p>
+  </div>
+  <div th:each="genre : ${video.genre}">
+    <p th:text="${genre}"></p>
+  </div>
+  <div th:each="role : ${video.role}">
+    <p th:text="${role}"></p>
+  </div>
   <p th:text="${video.type}"></p>
 
 </div>
