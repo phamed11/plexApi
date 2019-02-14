@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -85,4 +87,18 @@ public class PlexService {
     }
     return all;
   }
+
+  public Video changeStringToDateTime(Video video) {
+    video.setAddedAt(String.valueOf(Instant.ofEpochMilli(Long.parseLong(video.getAddedAt())).atZone(ZoneId.systemDefault()).toLocalDateTime()));
+    return video;
+  }
+
+  public List<Object> all() {
+    List<Object> result = allVideos();
+    for (Object video : result) {
+        changeStringToDateTime((Video)video);
+      }
+    return result;
+  }
+
 }
