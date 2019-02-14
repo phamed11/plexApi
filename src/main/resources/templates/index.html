@@ -7,20 +7,27 @@
   <title>Plex</title>
 </head>
 <body>
-<div th:each="video : ${videos}">
-  <h2 th:text="${video.grandparentTitle}"></h2>
-  <h4 th:text="${video.parentTitle}"></h4>
-  <h6 th:text="${video.title}"></h6>
-  <div th:each="director : ${video.director}">
-   <b> <p th:text="${director.tag}"></p></b>
-  </div>
-  <div th:each="genre : ${video.genre}">
-    <p th:text="${genre.tag}"></p>
-  </div>
-  <div th:each="role : ${video.role}">
-    <p th:text="${role.tag}"></p>
-  </div>
-  <p th:text="${video.type}"></p>
+<!--<div th:each="video : ${videos}">-->
+  <!--<h2 th:text="${video.grandparentTitle}"></h2>-->
+  <!--<h4 th:text="${video.parentTitle}"></h4>-->
+  <!--<h6 th:text="${video.title}"></h6>-->
+  <!--<div th:each="director : ${video.director}">-->
+   <!--<b> <p th:text="${director.tag}"></p></b>-->
+  <!--</div>-->
+  <!--<div th:each="genre : ${video.genre}">-->
+    <!--<p th:text="${genre.tag}"></p>-->
+  <!--</div>-->
+  <!--<div th:each="role : ${video.role}">-->
+    <!--<p th:text="${role.tag}"></p>-->
+  <!--</div>-->
+  <!--<p th:text="${video.type}"></p>-->
+  <!--<p th:text="${video.addedAt}"></p>-->
+
+<!--</div>-->
+
+<div th:each="video : ${dbVideos}">
+  <p th:text="${video.title}"></p>
+  <p th:text="${video.addedAt}"></p>
 
 </div>
 

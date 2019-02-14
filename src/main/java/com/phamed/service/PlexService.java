@@ -1,5 +1,7 @@
 package com.phamed.service;
 
+import com.phamed.dbModels.Videos;
+import com.phamed.dbModels.VideosRepository;
 import com.phamed.plexModels.MediaContainer;
 import com.phamed.plexModels.Video;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +31,11 @@ public class PlexService {
 
   private final String urlAddress = url + "/library/all?X-Plex-Token=" + token;
 
+  private VideosRepository videosRepository;
+
+  public PlexService(VideosRepository videosRepository) {
+    this.videosRepository = videosRepository;
+  }
 
   public List<Video> getAllMediaFromFile(String file) {
     List<Video> allMedia = new ArrayList<>();
@@ -68,6 +77,14 @@ public class PlexService {
     Unmarshaller jaxbUnmashaller = jaxbContext.createUnmarshaller();
     MediaContainer mediaContainerList = (MediaContainer) jaxbUnmashaller.unmarshal(in);
     List<Video> directorTypes = mediaContainerList.getVideos();
+
+
+    for(int i = 0; i < 5; i++) {
+        Videos videos = new Videos();
+        videos.setTitle(directorTypes.get(i).getTitle());
+        videos.setAddedAt(Instant.ofEpochMilli(Long.parseLong(directorTypes.get(i).getAddedAt()) * 1000).atZone(ZoneId.systemDefault()).toLocalDateTime());
+        videosRepository.save(videos);
+    }
     in.close();
     return directorTypes;
   }
@@ -85,4 +102,9 @@ public class PlexService {
     }
     return all;
   }
+
+  public List<Videos> allDBVideos() {
+    return videosRepository.findAll();
+  }
+
 }

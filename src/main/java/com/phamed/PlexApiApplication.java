@@ -13,7 +13,6 @@ public class PlexApiApplication {
     SpringApplication.run(PlexApiApplication.class, args);
 
 
-    PlexService plexService = new PlexService();
 
   }
 
