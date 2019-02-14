@@ -8,15 +8,17 @@
 </head>
 <body>
 <div th:each="video : ${videos}">
-  <p th:text="${video.title}"></p>
+  <h2 th:text="${video.grandparentTitle}"></h2>
+  <h4 th:text="${video.parentTitle}"></h4>
+  <h6 th:text="${video.title}"></h6>
   <div th:each="director : ${video.director}">
-    <p th:text="${director}"></p>
+   <b> <p th:text="${director.tag}"></p></b>
   </div>
   <div th:each="genre : ${video.genre}">
-    <p th:text="${genre}"></p>
+    <p th:text="${genre.tag}"></p>
   </div>
   <div th:each="role : ${video.role}">
-    <p th:text="${role}"></p>
+    <p th:text="${role.tag}"></p>
   </div>
   <p th:text="${video.type}"></p>
 
