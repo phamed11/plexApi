@@ -30,14 +30,14 @@ public class PlexService {
   private final String urlAddress = url + "/library/all?X-Plex-Token=" + token;
 
 
-  public List<Object> getAllMediaFromFile(String file) {
-    List<Object> allMedia = new ArrayList<>();
+  public List<Video> getAllMediaFromFile(String file) {
+    List<Video> allMedia = new ArrayList<>();
     try {
       JAXBContext jaxbContext = JAXBContext.newInstance(MediaContainer.class);
       Unmarshaller jaxbUnmashaller = jaxbContext.createUnmarshaller();
       File xmlFile = new File(file);
       MediaContainer mediaContainerList = (MediaContainer) jaxbUnmashaller.unmarshal(xmlFile);
-      allMedia = mediaContainerList.getDirectoryOrVideo();
+      allMedia = mediaContainerList.getVideos();
     } catch (JAXBException e) {
       e.printStackTrace();
     }
@@ -62,24 +62,23 @@ public class PlexService {
     fos.close();
   }
 
-  public List<Object> getXmlFromUrlToObject(String url) throws IOException, JAXBException {
+  public MediaContainer getXmlFromUrlToObject(String url) throws IOException, JAXBException {
     URL urlAddress = new URL(url);
     URLConnection con = urlAddress.openConnection();
     InputStream in = con.getInputStream();
     JAXBContext jaxbContext = JAXBContext.newInstance(MediaContainer.class);
     Unmarshaller jaxbUnmashaller = jaxbContext.createUnmarshaller();
     MediaContainer mediaContainerList = (MediaContainer) jaxbUnmashaller.unmarshal(in);
-    List<Object> directorTypes = mediaContainerList.getDirectoryOrVideo();
     in.close();
-    return directorTypes;
+    return mediaContainerList;
   }
 
-  public List<Object> allVideos() {
-    List<Object> all = new ArrayList<>();
+  public List<Video> allVideos() {
+    List<Video> all = new ArrayList<>();
     try {
-      all = getXmlFromUrlToObject(urlAddress).stream()
-          .filter(v -> v instanceof Video)
-          .collect(Collectors.toList());
+      all = getXmlFromUrlToObject(urlAddress).getVideos().stream()
+      .map(this::changeStringToDateTime)
+      .collect(Collectors.toList());
     } catch (IOException e) {
       e.printStackTrace();
     } catch (JAXBException e) {
@@ -89,16 +88,8 @@ public class PlexService {
   }
 
   public Video changeStringToDateTime(Video video) {
-    video.setAddedAt(String.valueOf(Instant.ofEpochMilli(Long.parseLong(video.getAddedAt())).atZone(ZoneId.systemDefault()).toLocalDateTime()));
+    video.setAddedAt(String.valueOf(Instant.ofEpochMilli(Long.parseLong(video.getAddedAt()) * 1000).atZone(ZoneId.systemDefault()).toLocalDateTime()));
     return video;
-  }
-
-  public List<Object> all() {
-    List<Object> result = allVideos();
-    for (Object video : result) {
-        changeStringToDateTime((Video)video);
-      }
-    return result;
   }
 
 }

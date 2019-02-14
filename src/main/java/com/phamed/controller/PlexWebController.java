@@ -17,7 +17,7 @@ public class PlexWebController {
 
   @GetMapping("/")
   public String allVideos(Model model) {
-    model.addAttribute("videos", plexService.all());
+    model.addAttribute("videos", plexService.allVideos());
     return "index";
   }
 }
