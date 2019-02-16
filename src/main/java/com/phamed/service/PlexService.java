@@ -2,7 +2,6 @@ package com.phamed.service;
 
 import com.phamed.plexModels.MediaContainer;
 import com.phamed.plexModels.Video;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.xml.bind.JAXBContext;
