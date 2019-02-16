@@ -9,15 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PlexWebController {
 
-  PlexService plexService;
+  private PlexService plexService;
 
   public PlexWebController(PlexService plexService) {
     this.plexService = plexService;
   }
 
-  @GetMapping("/")
+  @GetMapping("/home")
   public String allVideos(Model model) {
     model.addAttribute("videos", plexService.allVideos());
     return "home";
   }
+
+  @GetMapping(value = {"/", "/login"})
+  public String login(Model model) {
+    return "login";
+  }
+
 }
