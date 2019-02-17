@@ -35,7 +35,6 @@ jobs:
             - v1-dependencies-
 
       - run: gradle dependencies
-        -e POSTGRES_PASSWORD=password
 
       - save_cache:
           paths:
