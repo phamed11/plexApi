@@ -23,6 +23,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
       POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
 
     steps:
       - checkout
